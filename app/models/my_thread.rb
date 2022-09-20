@@ -1,0 +1,2 @@
+class MyThread < ApplicationRecord
+end

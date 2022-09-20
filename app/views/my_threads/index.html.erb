@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>My threads</h1>
+
+<div id="my_threads">
+  <% @my_threads.each do |my_thread| %>
+    <%= render my_thread %>
+    <p>
+      <%= link_to "Show this my thread", my_thread %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New my thread", new_my_thread_path %>
