@@ -1,0 +1,30 @@
+<%= form_with(model: my_thread) do |form| %>
+  <% if my_thread.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(my_thread.errors.count, "error") %> prohibited this my_thread from being saved:</h2>
+
+      <ul>
+        <% my_thread.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= my_thread %>
+  <%= :tittle %>
+
+  <div>
+    <%= form.label :tittle, style: "display: block" %>
+    <%= form.text_field :tittle %>
+  </div>
+
+  <div>
+    <%= form.label "内容", style: "display: block" %>
+    <%= form.text_field :body %>
+  </div>
+
+  <div>
+    <%= form.submit "送信" %>
+    <%= form.submit %>
+  </div>
+<% end %>
