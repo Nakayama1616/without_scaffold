@@ -1,7 +1,12 @@
+# TODO:質問リスト
+# 1,データのIDがnilの理由
+#
 class MyThreadsController < ApplicationController
   # 各メソッドの読み込み前に実行される　before_action
   # set_my_threadをshowのみで動くように制限
-  before_action :set_my_thread, only: %i[show, edit, update]
+  # before_action :set_my_thread, only: %i[show, edit, update]
+  # onlyの後の関数の羅列に「,」は不要
+  before_action :set_my_thread, only: %i[show edit update]
 
   def index
     @my_threads = MyThread.all
@@ -15,7 +20,8 @@ class MyThreadsController < ApplicationController
     @my_thread = MyThread.new(my_thread_params)
     respond_to do |format|
       if @my_thread.save
-        format.html { redirect_to my_thread_url(@my_thread), notice: "My thread was successfully created." }
+        format.html { redirect_to my_thread_url(@my_thread), notice: "登録完了" }
+        # TODO　「:created」や「:ok」（updateで使用）などについて詳しくしらべる
         format.json { render :show, status: :created, location: @my_thread }
       else
         # リクエストされるフォーマットがHTML形式の場合
@@ -39,7 +45,7 @@ class MyThreadsController < ApplicationController
       # すでにset_my_threadで更新するデータを@my_threadで定義しているので下記のIF文は間違え
       # if @my_thread = MyThread.update(my_thread_params)
       if @my_thread.update(my_thread_params)
-        format.html { redirect_to my_thread_url(@my_thread), notice: "My thread was successfully updated." }
+        format.html { redirect_to my_thread_url(@my_thread), notice: "更新完了" }
         format.json { render :show, status: :ok, location: @my_thread }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,7 +55,7 @@ class MyThreadsController < ApplicationController
   end
 
   private
-    # 一部の関数で使用されているデータを読み込む用の関数
+  # 一部の関数で使用されているデータを読み込む用の関数
     def set_my_thread
       @my_thread = MyThread.find(params[:id])
     end
