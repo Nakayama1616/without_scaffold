@@ -6,7 +6,7 @@ class MyThreadsController < ApplicationController
   # set_my_threadをshowのみで動くように制限
   # before_action :set_my_thread, only: %i[show, edit, update]
   # onlyの後の関数の羅列に「,」は不要
-  before_action :set_my_thread, only: %i[show edit update]
+  before_action :set_my_thread, only: %i[show edit update destroy]
 
   def index
     @my_threads = MyThread.all
@@ -14,6 +14,13 @@ class MyThreadsController < ApplicationController
 
   def new
     @my_thread = MyThread.new
+  end
+
+  # before_actionでset_my_threadを読み込んでいるよ！
+  def show
+  end
+
+  def edit
   end
 
   def create
@@ -33,13 +40,6 @@ class MyThreadsController < ApplicationController
     end
   end
 
-  # before_actionでset_my_threadを読み込んでいるよ！
-  def show
-  end
-
-  def edit
-  end
-
   def update
     respond_to do |format|
       # すでにset_my_threadで更新するデータを@my_threadで定義しているので下記のIF文は間違え
@@ -52,6 +52,15 @@ class MyThreadsController < ApplicationController
         format.json { render json: @my_thread.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def destroy
+    # destroyとdeleteの違い　https://qiita.com/jackie0922youhei/items/588cd6f62cb1ff9e9809
+    @my_thread.destroy!
+      respond_to do |format|
+        format.html{redirect_to my_threads_url, notice: "削除"}
+        format.json
+      end
   end
 
   private

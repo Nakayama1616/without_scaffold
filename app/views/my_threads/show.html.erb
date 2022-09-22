@@ -3,8 +3,11 @@
 <%= render @my_thread %>
 
 <div>
-  <%= link_to "Edit this my thread", edit_my_thread_path(@my_thread) %> |
-  <%= link_to "Back to my threads", my_threads_path %>
+  <%= link_to "スレッドを編集する", edit_my_thread_path(@my_thread) %> |
+  <%= link_to "スレッド一覧に戻る", my_threads_path %>
 
-  <%= button_to "Destroy this my thread", @my_thread, method: :delete %>
+  <%= button_to "スレッドを削除する", @my_thread, method: :delete %>
+</div>
+<div>
+  <%= link_to "コメントを書く", new_comment_path %>
 </div>

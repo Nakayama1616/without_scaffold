@@ -6,9 +6,9 @@
   <% @my_threads.each do |my_thread| %>
     <%= render my_thread %>
     <p>
-      <%= link_to "Show this my thread", my_thread %>
+      <%= link_to "スレッドの詳細をみる", my_thread %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New my thread", new_my_thread_path %>
+<%= link_to "新規スレッドを立てる", new_my_thread_path %>
