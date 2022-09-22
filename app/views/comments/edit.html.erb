@@ -1,10 +1,10 @@
 <h1>Editing my thread</h1>
 
-<%= render "form", my_thread: @my_thread, comment: @comment %>
+<%= render "form", thread: @thread, comment: @comment %>
 
 <br>
 
 <div>
-  <%= link_to "スレッド詳細に戻る", @my_thread %> |
-  <%= link_to "スレッド一覧に戻る", my_threads_path %>
+  <%= link_to "コメント詳細に戻る", my_thread_comment_path %>|
+  <%= link_to "スレッド詳細に戻る", @thread %>
 </div>

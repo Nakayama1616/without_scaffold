@@ -3,7 +3,7 @@
 <%= render @comment %>
 
 <div>
-  <%= link_to "コメントを編集する", edit_my_thread_comment_path(@comment) %>
+  <%= link_to "コメントを編集する", edit_my_thread_comment_path(@thread,@comment) %>
   <%= button_to "コメントを削除する", my_thread_comment_path(@thread, @comment.id), method: :delete %>
 </div>
 <div>

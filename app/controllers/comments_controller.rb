@@ -1,3 +1,6 @@
+# TODO
+# 質問リスト
+# 同じ_form.htmlを使っているのにPATCHになったりPOSTになる理由→エンティティ次第？
 class CommentsController < ApplicationController
   before_action :set_thread
   before_action :set_comment, only: %i[edit show update destroy]
@@ -32,13 +35,22 @@ class CommentsController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.html{redirect_to :action => 'show'}
+        format.json{render :show, status: :created, location: @comment}
+      else
+        format.html {render :edit, status: :unprocessable_entity}
+        format.json {render json: @my_thread.errors, status: :unprocessable_entity }
 
+      end
+    end
   end
 
   def destroy
-    @comment.destroy!
+    @comment.destroy
     respond_to do |format|
-      format.html{redirect_to my_thread_url(:my_thread_id), notice: "削除"}
+      format.html{redirect_to :action => 'index'}
       format.json{render json: @comment.errors, status: :unprocessable_entity}
     end
   end
