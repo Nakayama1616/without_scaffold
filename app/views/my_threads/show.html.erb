@@ -9,5 +9,5 @@
   <%= button_to "スレッドを削除する", @my_thread, method: :delete %>
 </div>
 <div>
-  <%= link_to "コメントを書く", new_comment_path %>
+  <%= link_to "コメントを書く", new_my_thread_comment_path(@my_thread.id) %>
 </div>

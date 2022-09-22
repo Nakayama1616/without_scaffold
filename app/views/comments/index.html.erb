@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>コメント一覧</h1>
+
+<div id="my_threads">
+  <% @comment.each do |comment| %>
+    <%= render comment %>
+    <p>
+      <%= link_to "コメントの詳細をみる", comment %>
+    </p>
+  <% end %>
+</div>

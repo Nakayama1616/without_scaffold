@@ -1,4 +1,5 @@
-<%= form_with(model: comment) do |form| %>
+<!-- form_with モデルの順番に注意（commentが先だとエラーになる）-->
+<%= form_with model: [thread, comment] do |form| %>
   <% if comment.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -12,11 +13,12 @@
   <% end %>
 
   <div>
-    <%= form.label :tittle, style: "display: block" %>
+    <%= form.label :comment, style: "display: block" %>
     <%= form.text_field :body %>
   </div>
 
   <div>
+    <%= form.hidden_field :my_thread_id, :value => thread.id %>
     <%= form.submit "送信" %>
     <%= form.submit %>
   </div>
