@@ -9,5 +9,7 @@
   <%= button_to "スレッドを削除する", @my_thread, method: :delete %>
 </div>
 <div>
+  <!--  my_thread_comment_path(@my_thread.id)だと詳細ページに飛ばされる。一覧は「s」をつけよう。また、困ったらrails routesで確認できる -->
+  <%= link_to "コメント一覧を確認", my_thread_comments_path(@my_thread.id) %>
   <%= link_to "コメントを書く", new_my_thread_comment_path(@my_thread.id) %>
 </div>

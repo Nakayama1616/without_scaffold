@@ -6,7 +6,7 @@
   <% @comment.each do |comment| %>
     <%= render comment %>
     <p>
-      <%= link_to "コメントの詳細をみる", comment %>
+      <%= link_to "スレッドの詳細をみる", my_thread_comment_path(params[:my_thread_id],comment.id) %>
     </p>
   <% end %>
 </div>

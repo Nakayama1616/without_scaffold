@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @comment %>
+
+<div>
+  <%= link_to "コメントを編集する", edit_my_thread_comment_path(@comment) %>
+  <%= button_to "コメントを削除する", my_thread_comment_path(@thread, @comment.id), method: :delete %>
+</div>
+<div>
+  <!--  my_thread_comment_path(@comment.id)だと詳細ページに飛ばされる。一覧は「s」をつけよう。また、困ったらrails routesで確認できる -->
+  <%= link_to "コメント一覧を確認", my_thread_comments_path %>
+</div>
